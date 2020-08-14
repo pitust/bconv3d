@@ -17,7 +17,7 @@ export function select_all(action: 'SELECT' | 'DESELECT') {
 export function delete_selection() {
     blender.stdin.write(`bpy.ops.object.delete()\n`);
 }
-export function export_to_format(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj', file: string) {
+export function export_to(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj', file: string) {
     if (format == 'dae')
         blender.stdin.write(`bpy.ops.wm.collada_export(filepath=${JSON.stringify(file)})\n`);
     else if (['ply'].includes(format))
@@ -25,7 +25,7 @@ export function export_to_format(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj',
     else if (['fbx', 'gltf', 'obj'].includes(format))
         blender.stdin.write(`bpy.ops.export_scene.${format}(filepath=${JSON.stringify(file)})\n`);
 }
-export function import_from_format(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj', file: string) {
+export function import_from(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj', file: string) {
     if (format == 'dae')
         blender.stdin.write(`bpy.ops.wm.collada_import(filepath=${JSON.stringify(file)})\n`);
     else if (['ply'].includes(format))
@@ -36,6 +36,18 @@ export function import_from_format(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj
 export function done_with_blender(bye: boolean) {
     if (bye) blender.stdin.write(`import sys;sys.exit()`);
     blender.stdin.end();
+}
+export async function flush() {
+    return new Promise((res) => {
+        let id = Math.random().toString().slice(2);
+        blender.stdin.write(`print('asdf' + '${id}')\n`);
+        function done_check(x: Buffer) {
+            if (x.toString().includes(`asdf${id}`)) {
+                res();
+            }
+        }
+        blender.stdout.on('data', done_check);
+    })
 }
 blender.stdout.pipe(process.stderr);
 blender.stderr.pipe(process.stderr);

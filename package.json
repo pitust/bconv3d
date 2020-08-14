@@ -1,20 +1,20 @@
 {
   "name": "bconv3d",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert stuff with blender.",
-  "main": "index.js",
+  "main": "bin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc ./src/index.ts --outDir bin --module commonjs"
   },
   "keywords": [],
   "author": "pitust",
   "license": "GPLv3",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@types/node": "^14.0.27",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pitust/bconv3d.git"
