@@ -36,12 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.flush = exports.done_with_blender = exports.import_from_format = exports.export_to_format = exports.delete_selection = exports.select_all = exports.startBlender = void 0;
+exports.flush = exports.done_with_blender = exports.import_from = exports.export_to = exports.delete_selection = exports.select_all = exports.startBlender = void 0;
 var child_process_1 = require("child_process");
 var util_1 = require("./util");
 var blender;
 function startBlender(path) {
-    blender = child_process_1.exec(JSON.stringify(path) + " --python-console");
+    blender = child_process_1.exec(JSON.stringify(path) + " --python-console -b");
     blender.on('exit', function (e) {
         util_1.fatal('Blender exited with code %s', e);
     });
@@ -57,7 +57,7 @@ function delete_selection() {
     blender.stdin.write("bpy.ops.object.delete()\n");
 }
 exports.delete_selection = delete_selection;
-function export_to_format(format, file) {
+function export_to(format, file) {
     if (format == 'dae')
         blender.stdin.write("bpy.ops.wm.collada_export(filepath=" + JSON.stringify(file) + ")\n");
     else if (['ply'].includes(format))
@@ -65,8 +65,8 @@ function export_to_format(format, file) {
     else if (['fbx', 'gltf', 'obj'].includes(format))
         blender.stdin.write("bpy.ops.export_scene." + format + "(filepath=" + JSON.stringify(file) + ")\n");
 }
-exports.export_to_format = export_to_format;
-function import_from_format(format, file) {
+exports.export_to = export_to;
+function import_from(format, file) {
     if (format == 'dae')
         blender.stdin.write("bpy.ops.wm.collada_import(filepath=" + JSON.stringify(file) + ")\n");
     else if (['ply'].includes(format))
@@ -74,7 +74,7 @@ function import_from_format(format, file) {
     else if (['fbx', 'gltf', 'obj'].includes(format))
         blender.stdin.write("bpy.ops.import_scene." + format + "(filepath=" + JSON.stringify(file) + ")\n");
 }
-exports.import_from_format = import_from_format;
+exports.import_from = import_from;
 function done_with_blender(bye) {
     if (bye)
         blender.stdin.write("import sys;sys.exit()");

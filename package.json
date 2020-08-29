@@ -1,6 +1,6 @@
 {
   "name": "bconv3d",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Convert stuff with blender.",
   "main": "bin/index.js",
   "scripts": {
