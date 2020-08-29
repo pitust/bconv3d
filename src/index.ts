@@ -3,7 +3,7 @@ import { fatal, warn } from './util';
 
 let blender: ChildProcess;
 export function startBlender(path: string) {
-    blender = exec(`${JSON.stringify(path)} --python-console`);
+    blender = exec(`${JSON.stringify(path)} --python-console -b`);
     blender.on('exit', e => {
         fatal('Blender exited with code %s', e);
     })
