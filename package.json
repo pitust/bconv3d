@@ -4,7 +4,7 @@
   "description": "Convert stuff with blender.",
   "main": "bin/index.js",
   "scripts": {
-    "build": "tsc ./src/index.ts --outDir bin --module commonjs"
+    "build": "tsc ./src/index.ts --outDir bin --module commonjs --declarationMap -d"
   },
   "keywords": [],
   "author": "pitust",

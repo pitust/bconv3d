@@ -1,0 +1,742 @@
+
+import json
+print('asdf' + '48507521104184725')
+
+# >>> >>> 
+# NOT synced (for 48507521104184725)
+
+# >>> 
+# NOT synced (for 48507521104184725)
+
+# >>> 
+# NOT synced (for 48507521104184725)
+
+# asdf48507521104184725
+# >>> 
+# synced
+
+class PyRoots:
+      def __init__(self):
+        self.bpy = bpy
+
+# ... 
+# ... 
+print('asdf' + '06865812364089474')
+
+# ... 
+# NOT synced (for 06865812364089474)
+
+# >>> asdf06865812364089474
+# >>> 
+# synced
+
+pyRoots = PyRoots()
+# >>> 
+print('asdf' + '8697685837239959')
+
+# asdf8697685837239959
+# >>> 
+# synced
+
+sentinel = object()
+print('asdf' + '6847700329813202')
+
+# >>> 
+# NOT synced (for 6847700329813202)
+
+# asdf6847700329813202
+# >>> 
+# synced
+
+pyfiObject = [pyRoots, None]
+print('asdf' + '3271646658633445')
+
+# >>> 
+# NOT synced (for 3271646658633445)
+
+# asdf3271646658633445
+# >>> 
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[2] = pyfiObject[0].bpy
+pyfiObject.append(None)
+
+pyfiObject[3] = pyfiObject[2].ops
+pyfiObject.append(None)
+
+pyfiObject[4] = pyfiObject[3].object
+pyfiObject.append(None)
+
+pyfiObject[5] = pyfiObject[4].select_all
+pyfiObject.append(None)
+
+pyfiObject.append(None)
+
+pyfiObject[6] = []
+
+# >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> 
+# >>> >>> >>> >>> 
+print('asdf' + '8152458873802042')
+
+print('asdf' + '9905726308435263')
+
+print('asdf' + '4427764846405231')
+
+print('asdf' + '37820612458334235')
+
+print('asdf' + '10451198150000818')
+
+print('asdf' + '7817896242198801')
+
+print('asdf' + '1380536489687345')
+
+print('asdf' + '2921754874847724')
+
+print('asdf' + '3195495867790614')
+
+print('asdf' + '6487347768005935')
+
+print('asdf' + '4949439211807618')
+
+# asdf8152458873802042
+# >>> asdf9905726308435263
+# >>> asdf4427764846405231
+# >>> asdf37820612458334235
+# >>> asdf10451198150000818
+# >>> asdf7817896242198801
+# >>> asdf1380536489687345
+# >>> asdf2921754874847724
+# >>> asdf3195495867790614
+# >>> asdf6487347768005935
+# >>> asdf4949439211807618
+# >>> 
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[8] = {}
+
+# >>> >>> 
+# >>> >>> 
+print('asdf' + '04130552066872539')
+
+print('asdf' + '09194557540444048')
+
+# asdf04130552066872539
+# >>> asdf09194557540444048
+# >>> 
+# synced
+
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[9] = "SELECT"
+
+# >>> >>> 
+# >>> >>> 
+print('asdf' + '603753153039853')
+
+print('asdf' + '8329430037368428')
+
+# asdf603753153039853
+# >>> asdf8329430037368428
+# >>> 
+# synced
+
+# synced
+
+pyfiObject[8]["action"] = pyfiObject[9]
+print('asdf' + '9556759274916766')
+
+# >>> asdf9556759274916766
+# >>> 
+# synced
+
+pyfiObject[8] = pyfiObject[4].select_all(*pyfiObject[6], **pyfiObject[8])
+print('asdf' + '690927930868114')
+
+# >>> 
+# NOT synced (for 690927930868114)
+
+# asdf690927930868114
+# >>> 
+# synced
+
+import json
+print('asdf' + '30338954725164213')
+
+# >>> >>> 
+# NOT synced (for 30338954725164213)
+
+# >>> 
+# NOT synced (for 30338954725164213)
+
+# >>> 
+# NOT synced (for 30338954725164213)
+
+# asdf30338954725164213
+# >>> 
+# synced
+
+class PyRoots:
+      def __init__(self):
+        self.bpy = bpy
+
+# ... 
+print('asdf' + '20295444187404077')
+
+# ... ... 
+# NOT synced (for 20295444187404077)
+
+# >>> asdf20295444187404077
+# >>> 
+# synced
+
+pyRoots = PyRoots()
+print('asdf' + '28971626817083673')
+
+# >>> 
+# NOT synced (for 28971626817083673)
+
+# asdf28971626817083673
+# >>> 
+# synced
+
+sentinel = object()
+print('asdf' + '9917425533001356')
+
+# >>> 
+# NOT synced (for 9917425533001356)
+
+# asdf9917425533001356
+# >>> 
+# synced
+
+pyfiObject = [pyRoots, None]
+print('asdf' + '4463669981583904')
+
+# >>> 
+# NOT synced (for 4463669981583904)
+
+# asdf4463669981583904
+# >>> 
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[2] = pyfiObject[0].bpy
+pyfiObject.append(None)
+
+pyfiObject[3] = pyfiObject[2].ops
+pyfiObject.append(None)
+
+pyfiObject[4] = pyfiObject[3].object
+pyfiObject.append(None)
+
+pyfiObject[5] = pyfiObject[4].select_all
+pyfiObject.append(None)
+
+pyfiObject.append(None)
+
+pyfiObject[6] = []
+
+# >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> 
+# >>> >>> >>> >>> >>> >>> 
+print('asdf' + '0004895401791480403')
+
+print('asdf' + '5699471102802418')
+
+print('asdf' + '31300279586983204')
+
+print('asdf' + '8095123837495823')
+
+print('asdf' + '1250581439222127')
+
+print('asdf' + '103681917166633')
+
+print('asdf' + '2629995913499039')
+
+print('asdf' + '1701975400995437')
+
+print('asdf' + '9369835290707687')
+
+print('asdf' + '5938257408718306')
+
+print('asdf' + '5295636580768928')
+
+# >>> >>> asdf0004895401791480403
+# >>> asdf5699471102802418
+# >>> asdf31300279586983204
+# >>> asdf8095123837495823
+# >>> asdf1250581439222127
+# >>> asdf103681917166633
+# >>> asdf2629995913499039
+# >>> 
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# NOT synced (for 1701975400995437)
+
+# NOT synced (for 9369835290707687)
+
+# NOT synced (for 5938257408718306)
+
+# NOT synced (for 5295636580768928)
+
+# asdf1701975400995437
+# >>> asdf9369835290707687
+# >>> asdf5938257408718306
+# >>> asdf5295636580768928
+# >>> 
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[8] = {}
+
+# >>> >>> 
+# >>> >>> 
+print('asdf' + '9578430553095911')
+
+print('asdf' + '793981638689844')
+
+# asdf9578430553095911
+# >>> asdf793981638689844
+# >>> 
+# synced
+
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[9] = "SELECT"
+
+# >>> >>> 
+print('asdf' + '64967794350746')
+
+# >>> >>> 
+# NOT synced (for 64967794350746)
+
+print('asdf' + '5311181446964439')
+
+# asdf64967794350746
+# >>> asdf5311181446964439
+# >>> 
+# synced
+
+# synced
+
+pyfiObject[8]["action"] = pyfiObject[9]
+print('asdf' + '6743039550368553')
+
+# >>> asdf6743039550368553
+# >>> 
+# synced
+
+pyfiObject[8] = pyfiObject[4].select_all(*pyfiObject[6], **pyfiObject[8])
+print('asdf' + '47856477737396075')
+
+# >>> 
+# NOT synced (for 47856477737396075)
+
+# asdf47856477737396075
+# >>> 
+# synced
+
+import json
+print('asdf' + '7379348593195456')
+
+# >>> 
+# NOT synced (for 7379348593195456)
+
+# >>> >>> 
+# NOT synced (for 7379348593195456)
+
+# >>> 
+# NOT synced (for 7379348593195456)
+
+# asdf7379348593195456
+# >>> 
+# synced
+
+class PyRoots:
+      def __init__(self):
+        self.bpy = bpy
+
+# ... 
+# ... ... 
+# >>> 
+print('asdf' + '5775576576614778')
+
+# asdf5775576576614778
+# >>> 
+# synced
+
+pyRoots = PyRoots()
+print('asdf' + '7391604865153278')
+
+# >>> 
+# NOT synced (for 7391604865153278)
+
+# asdf7391604865153278
+# >>> 
+# synced
+
+sentinel = object()
+print('asdf' + '7032649046349408')
+
+# >>> 
+# NOT synced (for 7032649046349408)
+
+# asdf7032649046349408
+# >>> 
+# synced
+
+pyfiObject = [pyRoots, None]
+# >>> 
+print('asdf' + '8274705237230013')
+
+# asdf8274705237230013
+# >>> 
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[2] = pyfiObject[0].bpy
+pyfiObject.append(None)
+
+pyfiObject[3] = pyfiObject[2].ops
+pyfiObject.append(None)
+
+pyfiObject[4] = pyfiObject[3].object
+pyfiObject.append(None)
+
+pyfiObject[5] = pyfiObject[4].select_all
+pyfiObject.append(None)
+
+pyfiObject.append(None)
+
+pyfiObject[6] = []
+
+# >>> >>> >>> >>> >>> >>> >>> 
+# >>> >>> >>> >>> >>> 
+print('asdf' + '7899961089154601')
+
+print('asdf' + '3884173010145051')
+
+print('asdf' + '6544038126397211')
+
+print('asdf' + '9829290207872872')
+
+print('asdf' + '5120316591102347')
+
+print('asdf' + '4913846279939924')
+
+print('asdf' + '01933138143981039')
+
+print('asdf' + '0964462638061081')
+
+print('asdf' + '27822343794830995')
+
+print('asdf' + '7846954516911393')
+
+print('asdf' + '21515819095059663')
+
+# >>> >>> >>> >>> >>> >>> asdf7899961089154601
+# >>> asdf3884173010145051
+# >>> asdf6544038126397211
+# >>> asdf9829290207872872
+# >>> asdf5120316591102347
+# >>> asdf4913846279939924
+# >>> asdf0964462638061081
+# >>> asdf01933138143981039
+# >>> asdf27822343794830995
+# >>> asdf7846954516911393
+# >>> asdf21515819095059663
+# >>> 
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[8] = {}
+
+print('asdf' + '37287171208604386')
+
+print('asdf' + '19871739798519616')
+
+# >>> >>> >>> >>> 
+# NOT synced (for 37287171208604386)
+
+# NOT synced (for 19871739798519616)
+
+# asdf37287171208604386
+# >>> asdf19871739798519616
+# >>> 
+# synced
+
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[9] = "SELECT"
+
+# >>> 
+print('asdf' + '16221395329430965')
+
+# >>> >>> >>> 
+# NOT synced (for 16221395329430965)
+
+print('asdf' + '5396469316906314')
+
+# asdf16221395329430965
+# >>> 
+# synced
+
+# NOT synced (for 5396469316906314)
+
+# asdf5396469316906314
+# >>> 
+# synced
+
+pyfiObject[8]["action"] = pyfiObject[9]
+print('asdf' + '8527781339060756')
+
+# >>> asdf8527781339060756
+# >>> 
+# synced
+
+pyfiObject[8] = pyfiObject[4].select_all(*pyfiObject[6], **pyfiObject[8])
+print('asdf' + '4575669939128175')
+
+# >>> 
+# NOT synced (for 4575669939128175)
+
+# asdf4575669939128175
+# >>> 
+# synced
+
+pyfiObject.append(None)
+
+pyfiObject[10] = pyfiObject[0].bpy
+pyfiObject.append(None)
+
+pyfiObject[11] = pyfiObject[10].ops
+pyfiObject.append(None)
+
+pyfiObject[12] = pyfiObject[11].object
+pyfiObject.append(None)
+
+pyfiObject[13] = pyfiObject[12].delete
+pyfiObject.append(None)
+
+pyfiObject.append(None)
+
+pyfiObject[14] = []
+
+# >>> >>> >>> >>> >>> 
+# >>> >>> 
+print('asdf' + '2097621685208546')
+
+print('asdf' + '7711314586797058')
+
+print('asdf' + '48959154522072956')
+
+print('asdf' + '7811046241752486')
+
+print('asdf' + '17966754332391344')
+
+print('asdf' + '9536086460994886')
+
+print('asdf' + '3326556146085178')
+
+print('asdf' + '7231896035773218')
+
+print('asdf' + '8438195232573051')
+
+print('asdf' + '1392096590815617')
+
+print('asdf' + '7605812815358579')
+
+# >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> 
+# NOT synced (for 2097621685208546)
+
+# NOT synced (for 7711314586797058)
+
+# NOT synced (for 48959154522072956)
+
+# NOT synced (for 7811046241752486)
+
+# NOT synced (for 17966754332391344)
+
+# NOT synced (for 9536086460994886)
+
+# NOT synced (for 3326556146085178)
+
+# NOT synced (for 7231896035773218)
+
+# NOT synced (for 8438195232573051)
+
+# NOT synced (for 1392096590815617)
+
+# NOT synced (for 7605812815358579)
+
+# >>> asdf2097621685208546
+# >>> asdf7711314586797058
+# >>> asdf48959154522072956
+# >>> asdf7811046241752486
+# >>> asdf17966754332391344
+# >>> asdf9536086460994886
+# >>> asdf3326556146085178
+# >>> asdf7231896035773218
+# >>> asdf8438195232573051
+# >>> asdf1392096590815617
+# >>> asdf7605812815358579
+# >>> 
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+# synced
+
+pyfiObject[15] = pyfiObject[12].delete(*pyfiObject[14])
+print('asdf' + '5530669002399731')
+
+# Info: Deleted 3 object(s)
+# >>> 
+# NOT synced (for 5530669002399731)
+
+# asdf5530669002399731
+# >>> 
+# synced
+
+import json
+class PyRoots:
+      def __init__(self):
+        self.bpy = bpy
+
+pyRoots = PyRoots()
+sentinel = object()
+pyfiObject = [pyRoots, None]
+pyfiObject.append(None)
+
+pyfiObject[2] = pyfiObject[0].bpy
+pyfiObject.append(None)
+
+pyfiObject[3] = pyfiObject[2].ops
+pyfiObject.append(None)
+
+pyfiObject[4] = pyfiObject[3].object
+pyfiObject.append(None)
+
+pyfiObject[5] = pyfiObject[4].select_all
+pyfiObject.append(None)
+
+pyfiObject.append(None)
+
+pyfiObject[6] = []
+
+pyfiObject.append(None)
+
+pyfiObject[8] = {}
+
+pyfiObject.append(None)
+
+pyfiObject[9] = "SELECT"
+
+pyfiObject[8]["action"] = pyfiObject[9]
+pyfiObject[8] = pyfiObject[4].select_all(*pyfiObject[6], **pyfiObject[8])
+pyfiObject.append(None)
+
+pyfiObject[10] = pyfiObject[0].bpy
+pyfiObject.append(None)
+
+pyfiObject[11] = pyfiObject[10].ops
+pyfiObject.append(None)
+
+pyfiObject[12] = pyfiObject[11].object
+pyfiObject.append(None)
+
+pyfiObject[13] = pyfiObject[12].delete
+pyfiObject.append(None)
+
+pyfiObject.append(None)
+
+pyfiObject[14] = []
+
+pyfiObject[15] = pyfiObject[12].delete(*pyfiObject[14])
