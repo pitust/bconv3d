@@ -1,5 +1,5 @@
 # bconv3d
-Blender API exposed from JavaScript.
+Blender API & Opegit Studio's SCW thing exposed from JavaScript.
 ## Examples
 ```typescript
 import { startBlender, flush, select_all, delete_selection, export_to, import_from } from 'bconv3d';

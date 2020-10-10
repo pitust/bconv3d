@@ -1,4 +1,6 @@
 import { pyRoots, flush } from './pyfi';
+import { execSync } from 'child_process';
+import { unlinkSync, renameSync, copyFileSync } from 'fs';
 
 export async function select_all(action: 'SELECT' | 'DESELECT') {
     await pyRoots.bpy.ops.object.select_all({ action });
@@ -6,29 +8,42 @@ export async function select_all(action: 'SELECT' | 'DESELECT') {
 export async function delete_selection() {
     await pyRoots.bpy.ops.object.delete();
 }
-export async function export_to(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj' | 'x3d' | 'stl' | 'blend' | 'alembic', file: string) {
+export async function export_to(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj' | 'x3d' | 'stl' | 'blend' | 'alembic' | 'scw', file: string) {
     if (format == 'dae')
-        pyRoots.bpy.ops.wm.collada_export({ filepath: file });
+        await pyRoots.bpy.ops.wm.collada_export({ filepath: file });
     else if (['ply', 'stl'].includes(format))
-        pyRoots.bpy.ops.export_mesh.ply({ filepath: file });
+        await pyRoots.bpy.ops.export_mesh.ply({ filepath: file });
     else if (['fbx', 'gltf', 'obj', 'x3d'].includes(format))
-        pyRoots.bpy.ops.export_scene[format]({ filepath: file });
+        await pyRoots.bpy.ops.export_scene[format]({ filepath: file });
     else if (format == 'alembic')
-        pyRoots.bpy.ops.wm.alembic_export({ filepath: file });
+        await pyRoots.bpy.ops.wm.alembic_export({ filepath: file });
     else if (format == 'blend')
-        pyRoots.bpy.ops.wm.save_as_mainfile({ filepath: file });
+        await pyRoots.bpy.ops.wm.save_as_mainfile({ filepath: file });
+    else if (format == 'scw') {
+        await pyRoots.bpy.ops.wm.collada_export({ filepath: 'tmp.dae' });
+        execSync(`java --enable-preview -jar "${require.resolve('../SCW.jar')}" dae2scw tmp.dae`);
+        renameSync('tmp.scw', file);
+        unlinkSync('tmp.dae');
+    }
 }
-export async function import_from(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj' | 'x3d' | 'stl' | 'blend' | 'alembic', file: string) {
+export async function import_from(format: 'dae' | 'ply' | 'fbx' | 'gltf' | 'obj' | 'x3d' | 'stl' | 'blend' | 'alembic' | 'scw', file: string) {
     if (format == 'dae')
-        pyRoots.bpy.ops.wm.collada_import({ filepath: file });
+        await pyRoots.bpy.ops.wm.collada_import({ filepath: file });
     else if (['ply', 'stl'].includes(format))
-        pyRoots.bpy.ops.import_mesh.ply({ filepath: file });
+        await pyRoots.bpy.ops.import_mesh.ply({ filepath: file });
     else if (['fbx', 'gltf', 'obj', 'x3d'].includes(format))
-        pyRoots.bpy.ops.import_scene[format]({ filepath: file });
+        await pyRoots.bpy.ops.import_scene[format]({ filepath: file });
     else if (format == 'alembic')
-        pyRoots.bpy.ops.wm.alembic_import({ filepath: file });
+        await pyRoots.bpy.ops.wm.alembic_import({ filepath: file });
     else if (format == 'blend')
-        pyRoots.bpy.ops.wm.open_mainfile({ filepath: file });
+        await pyRoots.bpy.ops.wm.open_mainfile({ filepath: file });
+    else if (format == 'scw') {
+        copyFileSync(file, 'tmp.scw');
+        execSync(`java --enable-preview -jar "${require.resolve('../SCW.jar')}" scw2dae tmp.dae`);
+        await pyRoots.bpy.ops.wm.collada_import({ filepath: 'tmp.dae' });
+        unlinkSync('tmp.dae');
+        unlinkSync('tmp.scw');
+    }
 }
 export async function render(file: string) {
     let cam1 = await pyRoots.bpy.data.cameras.new("RenderingCam")
