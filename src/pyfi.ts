@@ -5,7 +5,7 @@ import { type } from "os";
 let blender: ChildProcess;
 const DEBUG = false;
 function startBlender(path: string) {
-    blender = exec(`${JSON.stringify(path)} --python-console`);
+    blender = exec(`${JSON.stringify(path)} --python-console -b`);
     blender.on('exit', e => {
         fatal('Blender exited with code %s', e);
     })
