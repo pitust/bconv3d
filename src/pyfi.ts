@@ -1,23 +1,29 @@
-import { readFile, appendFile } from "fs/promises";
+import { readFile, appendFile, unlink } from "fs/promises";
 import { ChildProcess, exec } from "child_process";
 import { fatal } from "./util";
 import { type } from "os";
 let blender: ChildProcess;
-export function startBlender(path: string) {
+const DEBUG = false;
+function startBlender(path: string) {
     blender = exec(`${JSON.stringify(path)} --python-console`);
     blender.on('exit', e => {
         fatal('Blender exited with code %s', e);
     })
     blender.stdin.write(`import bpy\n`);
+    blender.stdin.write(`import mathutils\n`);
     blender.stdin.write(`C = bpy.context\n`);
     blender.stdout.setMaxListeners(65536);
+    blender.stderr.pipe(process.stdout);
+    blender.stderr.on('data', async (x: Buffer) => {
+        if (DEBUG) await appendFile('stuff.txt', '\n' + x.toString());
+    })
 }
 async function __runpyfi(code: string) {
     blender.stdin.write(`${code}\n`);
-    await appendFile('stuff.txt', '\n' + code);
+    if (DEBUG) await appendFile('stuff.txt', '\n' + code);
     await flush();
 }
-async function flush() {
+export async function flush() {
     return new Promise(async (res) => {
         let id = Math.random().toString().slice(2);
         async function done_check(x: Buffer) {
@@ -37,7 +43,9 @@ function id() {
     __runpyfi('pyfiObject.append(None)\n');
     return inc++;
 }
-async function sendVal(s: string | number | boolean | object) {
+async function sendVal(s: any) {
+    // None in python
+    if (s == null || s == undefined) return 1;
     if (table.has(s)) return table.get(s);
     if (typeof s == 'boolean') {
         let i = id();
@@ -45,6 +53,14 @@ async function sendVal(s: string | number | boolean | object) {
         return i;
     }
     if (typeof s == 'object') {
+        if (s instanceof Array) {
+            let i = id();
+            await __runpyfi(`pyfiObject[${i}] = []\n`);
+            for (let e of s) {
+                await __runpyfi(`pyfiObject[${i}].append(pyfiObject[${await sendVal(await e)}])\n`);
+            }
+            return i;
+        }
         let i = id();
         await __runpyfi(`pyfiObject[${i}] = {}\n`);
         for (let e of Object.getOwnPropertyNames(s)) {
@@ -65,11 +81,11 @@ function forId(i: number, key: string): any {
         let i2 = id();
         let i3 = id();
         let i4 = table.get(leet);
-        if (typeof args[args.length - 1] == 'object' && !table.has(args[args.length - 1])) {
+        if (typeof args[args.length - 1] == 'object' && !table.has(args[args.length - 1]) && !(args[args.length - 1] instanceof Array)) {
             // that has kvargs
             await __runpyfi(`pyfiObject[${i2}] = []\n`);
             for (let a of args.slice(0, -1)) {
-                let i5 = sendVal(a);
+                let i5 = await sendVal(a);
                 await __runpyfi(`pyfiObject[${i2}].append(pyfiObject[${i5}])\n`);
             }
             let i6 = await sendVal(args[args.length - 1]);
@@ -78,14 +94,14 @@ function forId(i: number, key: string): any {
         } else {
             await __runpyfi(`pyfiObject[${i2}] = []\n`);
             for (let a of args) {
-                let i5 = sendVal(a);
+                let i5 = await sendVal(a);
                 await __runpyfi(`pyfiObject[${i2}].append(pyfiObject[${i5}])\n`);
             }
             await __runpyfi(`pyfiObject[${i3}] = pyfiObject[${i4}].${key}(*pyfiObject[${i2}])`);
             return forId(i3, '__pyfi_bad_key');
         }
     }
-    let p = new Proxy(() => {}, {
+    let p = new Proxy(() => { }, {
         has(_, p) {
             if (p == 'then') return false;
             if (p == Symbol.iterator) return false;
@@ -98,6 +114,13 @@ function forId(i: number, key: string): any {
                 return forId(i2, '__pyfi_bad_key');
             }
             if (p == 'then') return undefined;
+            if (p == 'pyfiGetDictValue') {
+                return async (key: string) => {
+                    let i2 = id();
+                    __runpyfi(`pyfiObject[${i2}] = pyfiObject[${i}][pyfiObject[${await sendVal(key)}]]`);
+                    return forId(i2, p as string);
+                }
+            }
             if (p == Symbol.iterator) return undefined;
             if (p == Symbol.asyncIterator) {
                 return (async () => {
@@ -122,15 +145,19 @@ function forId(i: number, key: string): any {
                 await __runpyfi(`f = open('dump', 'w')\n`)
                 await __runpyfi(`f.write(json.dumps(pyfiObject[${i}]))\n`);
                 await __runpyfi(`f.close()\n`);
-                return JSON.parse(await readFile('dump', { encoding: 'utf-8' }));
+                let d = JSON.parse(await readFile('dump', { encoding: 'utf-8' }));
+                await unlink('dump');
+                return d;
             }
             let i2 = id();
             __runpyfi(`pyfiObject[${i2}] = pyfiObject[${i}].${p as string}`);
             return forId(i2, p as string);
         },
         set(_, p, v) {
-            let i2 = sendVal(v);
-            __runpyfi(`pyfiObject[${i}].${p as string} = pyfiObject[${i2}]`);
+            (async () => {
+                let i2 = await sendVal(v);
+                await __runpyfi(`pyfiObject[${i}].${p as string} = pyfiObject[${i2}]`);
+            })();
             return true;
         },
         apply(_, t, a) {
@@ -141,14 +168,19 @@ function forId(i: number, key: string): any {
     return p;
 }
 export async function init() {
+    startBlender('blender');
     await __runpyfi('import json');
     await __runpyfi(`class PyRoots:
       def __init__(self):
         self.bpy = bpy
+        self.mathutils = mathutils
 `);
     await __runpyfi('pyRoots = PyRoots()');
     await __runpyfi('sentinel = object()');
     await __runpyfi('pyfiObject = [pyRoots, None]');
+    await pyRoots.bpy.ops.object.select_all({ action: 'DESELECT' });
+    await pyRoots.bpy.context.scene.camera.select_set(true);
+    await pyRoots.bpy.ops.object.delete();
 }
 export async function import_python(mod: string) {
     let i = id();
